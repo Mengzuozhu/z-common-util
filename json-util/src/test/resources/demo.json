@@ -1,0 +1,25 @@
+{
+  "array": [
+    {
+      "author": "author1",
+      "title": "title1"
+    },
+    {
+      "author": "author2",
+      "title": "title2"
+    },
+    {
+      "category": "category3",
+      "author": "author3"
+    },
+    {
+      "category": "category4",
+      "title": "title4"
+    }
+  ],
+  "simple": {
+    "str": "字符串",
+    "number1": 1.1,
+    "number2": 2
+  }
+}
