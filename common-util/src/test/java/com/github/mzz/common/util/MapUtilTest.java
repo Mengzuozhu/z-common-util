@@ -12,12 +12,16 @@ import java.util.Map;
  * @author mengzz
  */
 public class MapUtilTest {
+    private String val = "val";
+    private Map<String, String> map = ImmutableMap.of("1", val, "2", val);
 
     @Test
-    public void getAnyOneValue() {
-        String val = "val";
-        Map<String, String> map = ImmutableMap.of("1", val, "2", "val2");
+    public void getAnyValue() {
         Assertions.assertEquals(val, MapUtil.getAnyValue(map));
+    }
+
+    @Test
+    public void getAnyEntry() {
         Assertions.assertEquals(val, MapUtil.getAnyEntry(map).getValue());
     }
 }

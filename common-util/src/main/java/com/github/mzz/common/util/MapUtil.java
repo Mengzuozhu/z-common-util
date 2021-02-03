@@ -1,6 +1,9 @@
 package com.github.mzz.common.util;
 
+import org.apache.commons.collections4.IterableUtils;
+
 import java.util.Map;
+import java.util.Objects;
 
 /**
  * The type Map util.
@@ -8,25 +11,6 @@ import java.util.Map;
  * @author mengzz
  */
 public class MapUtil {
-    /**
-     * Is empty.
-     *
-     * @param map the map
-     * @return the boolean
-     */
-    public static boolean isEmpty(Map<?, ?> map) {
-        return (map == null || map.isEmpty());
-    }
-
-    /**
-     * Is not empty.
-     *
-     * @param map the map
-     * @return the boolean
-     */
-    public static boolean isNotEmpty(Map<?, ?> map) {
-        return !isEmpty(map);
-    }
 
     /**
      * Gets any map value.
@@ -37,7 +21,7 @@ public class MapUtil {
      * @return the any one map value
      */
     public static <K, V> V getAnyValue(Map<K, V> map) {
-        return IterableUtils.getAnyNotNull(map.values());
+        return IterableUtils.find(map.values(), Objects::nonNull);
     }
 
     /**
@@ -49,7 +33,7 @@ public class MapUtil {
      * @return the any entry
      */
     public static <K, V> Map.Entry<K, V> getAnyEntry(Map<K, V> map) {
-        return IterableUtils.getAnyNotNull(map.entrySet());
+        return IterableUtils.find(map.entrySet(), Objects::nonNull);
     }
 
 }
