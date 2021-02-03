@@ -17,27 +17,21 @@ class JsonPathUtilTest {
     public void getJsonEval() {
         JSONObject json = getJson();
         Object eval = JsonPathUtil.jsonEvalWithRoot(json, "$.simple.number2");
-        System.out.println(eval);
         assertEquals(2, eval);
     }
 
     @Test
     public void all() {
         JSONObject json = getJson();
-        Object all = JsonPathUtil.jsonEval(json, "$.simple");
-        System.out.println(all);
-        JSONObject jsonAll = all instanceof JSONObject ? ((JSONObject) all) : null;
-        if (jsonAll != null) {
-            assertEquals("字符串", jsonAll.getString("str"));
-        }
+        JSONObject jsonAll = JsonPathUtil.jsonEval(json, "$.simple", JSONObject.class);
+        assertEquals("字符串", jsonAll.getString("str"));
     }
 
     @Test
     public void jsonEvalForArray() {
         JSONObject json = getJson();
-        JSONArray eval1 = JsonPathUtil.jsonEvalForArray(json, "$..array.author");
-        System.out.println(eval1);
-        assertEquals(3, eval1.size());
+        JSONArray eval = JsonPathUtil.jsonEvalForArray(json, "$..array.author");
+        assertEquals(3, eval.size());
     }
 
     private JSONObject getJson() {
