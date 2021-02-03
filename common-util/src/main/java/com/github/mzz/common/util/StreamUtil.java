@@ -25,7 +25,9 @@ public class StreamUtil {
         if (CollectionUtils.isEmpty(collection)) {
             return new ArrayList<>();
         }
-        return collection.stream().map(mapper).collect(Collectors.toList());
+        return collection.stream()
+                .map(mapper)
+                .collect(Collectors.toList());
     }
 
     /**
@@ -42,7 +44,10 @@ public class StreamUtil {
         if (CollectionUtils.isEmpty(collection)) {
             return new ArrayList<>();
         }
-        return collection.parallelStream().filter(Objects::nonNull).map(mapper).collect(Collectors.toList());
+        return collection.parallelStream()
+                .filter(Objects::nonNull)
+                .map(mapper)
+                .collect(Collectors.toList());
     }
 
     /**
@@ -57,7 +62,9 @@ public class StreamUtil {
         if (CollectionUtils.isEmpty(collection)) {
             return new ArrayList<>();
         }
-        return collection.stream().filter(predicate).collect(Collectors.toList());
+        return collection.stream()
+                .filter(predicate)
+                .collect(Collectors.toList());
     }
 
     /**
@@ -73,7 +80,9 @@ public class StreamUtil {
         if (CollectionUtils.isEmpty(collection)) {
             return new HashSet<>();
         }
-        return collection.stream().map(mapper).collect(Collectors.toSet());
+        return collection.stream()
+                .map(mapper)
+                .collect(Collectors.toSet());
     }
 
     /**
@@ -88,7 +97,9 @@ public class StreamUtil {
         if (CollectionUtils.isEmpty(collection)) {
             return new HashSet<>();
         }
-        return collection.stream().filter(predicate).collect(Collectors.toSet());
+        return collection.stream()
+                .filter(predicate)
+                .collect(Collectors.toSet());
     }
 
     /**
@@ -132,8 +143,9 @@ public class StreamUtil {
         if (CollectionUtils.isEmpty(collection)) {
             return new HashMap<>(1);
         }
-        return collection.stream().collect(HashMap::new,
-                (state, t) -> state.put(keyMapper.apply(t), valueMapper.apply(t)), HashMap::putAll);
+        return collection.stream()
+                .collect(HashMap::new,
+                        (state, t) -> state.put(keyMapper.apply(t), valueMapper.apply(t)), HashMap::putAll);
     }
 
     /**
@@ -153,8 +165,8 @@ public class StreamUtil {
         if (CollectionUtils.isEmpty(collection)) {
             return new HashMap<>(1);
         }
-        return collection.parallelStream().collect(Collectors.toConcurrentMap(keyMapper, valueMapper, (oldValue,
-                                                                                                       newValue) -> newValue));
+        return collection.parallelStream()
+                .collect(Collectors.toConcurrentMap(keyMapper, valueMapper, (oldValue, newValue) -> newValue));
     }
 
     /**
@@ -175,7 +187,8 @@ public class StreamUtil {
         if (CollectionUtils.isEmpty(collection)) {
             return new HashMap<>(1);
         }
-        return collection.stream().filter(predicate)
+        return collection.stream()
+                .filter(predicate)
                 .collect(Collectors.toMap(keyMapper, valueMapper, (oldValue, newValue) -> newValue));
     }
 
@@ -191,7 +204,10 @@ public class StreamUtil {
         if (CollectionUtils.isEmpty(collection)) {
             return null;
         }
-        return collection.stream().filter(predicate).findFirst().orElse(null);
+        return collection.stream()
+                .filter(predicate)
+                .findFirst()
+                .orElse(null);
     }
 
     /**
@@ -227,11 +243,13 @@ public class StreamUtil {
         if (CollectionUtils.isEmpty(collection) || action == null) {
             return;
         }
-        collection.stream().map(mapper).forEach(t -> {
-            if (t != null) {
-                action.accept(t);
-            }
-        });
+        collection.stream()
+                .map(mapper)
+                .forEach(t -> {
+                    if (t != null) {
+                        action.accept(t);
+                    }
+                });
     }
 
 
