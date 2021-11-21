@@ -14,10 +14,11 @@ import lombok.experimental.FieldNameConstants;
 @NoArgsConstructor
 @AllArgsConstructor
 @FieldNameConstants
-public class SourceClass {
+public class TargetClass {
     private Long id;
     private String name;
     private Integer age;
-    private String email;
-    private int num;
+    private String myEmail;
+    private Integer num;
+
 }
