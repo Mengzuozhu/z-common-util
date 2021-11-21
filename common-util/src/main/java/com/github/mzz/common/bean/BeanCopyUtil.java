@@ -25,7 +25,8 @@ public final class BeanCopyUtil {
     }
 
     /**
-     * Copy.
+     * 拷贝属性
+     * 注：不支持包装类型与基本类型互相拷贝
      *
      * @param <T>    the type parameter
      * @param source the source
@@ -37,7 +38,8 @@ public final class BeanCopyUtil {
     }
 
     /**
-     * Copy.
+     * 拷贝属性
+     * 注：不支持包装类型与基本类型互相拷贝
      *
      * @param <T>    the type parameter
      * @param source the source
@@ -51,7 +53,8 @@ public final class BeanCopyUtil {
     }
 
     /**
-     * Copy list.
+     * 拷贝属性
+     * 注：不支持包装类型与基本类型互相拷贝
      *
      * @param <T>     the type parameter
      * @param sources the sources
